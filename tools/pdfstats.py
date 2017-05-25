@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Exercise pdfminer, looking deeply into a PDF document, print some stats to stdout
-# Usage: parsepdf0.py <PDF filename>
+# Usage: pdfstats.py <PDF filename>
 
 import sys, os
 import collections

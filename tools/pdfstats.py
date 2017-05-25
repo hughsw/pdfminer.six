@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Exercise pdfminer, looking deeply into a PDF document, print some stats to stdout
-# Usage: pdfstats.py <PDF filename>
+# Usage: pdfstats.py <PDF-filename>
 
 import sys, os
 import collections
@@ -31,7 +31,7 @@ def main(args):
 
     if len(args) != 1:
         msg('Parse a PDF file and print some pdfminer-specific stats')
-        msg('Usage:', SCRIPT, '<PDF filename>')
+        msg('Usage:', SCRIPT, '<PDF-filename>')
         return 1
 
     infilename, = args
@@ -71,8 +71,7 @@ def main(args):
             interpreter.process_page(page)
             layout = device.get_result()
 
-            for item in flat_iter(layout):
-                lt_types[type(item).__name__] += 1
+            lt_types.update(type(item).__name__ for item in flat_iter(layout))
 
     msg('page_count', page_count)
     msg('lt_types:', ' '.join('{}:{}'.format(*tc) for tc in lt_types.items()))
